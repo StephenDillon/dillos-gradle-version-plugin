@@ -10,20 +10,10 @@ repositories {
 
 group = 'dillos'
 version = '0.0.2-SNAPSHOT'
-//jar.enabled = false
-
-dependencies {
-    compile 'org.apache.poi:poi'
-}
 
 task createPom {
     pom {
         project {
-            groupId 'dillos'
-            artifactId 'dillos-gradle-version-plugin'
-			version = '0.0.2-SNAPSHOT'
-
-            inceptionYear '2019'
             dependencyManagement {
 	            dependencies {
 	            	dependency {
