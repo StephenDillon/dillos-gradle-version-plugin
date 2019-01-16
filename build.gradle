@@ -9,10 +9,11 @@ repositories {
 }
 
 group = 'dillos'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2-SNAPSHOT'
+//jar.enabled = false
 
 dependencies {
-    compile 'org.springframework:spring-core'
+    compile 'org.apache.poi:poi'
 }
 
 task createPom {
@@ -20,15 +21,15 @@ task createPom {
         project {
             groupId 'dillos'
             artifactId 'dillos-gradle-version-plugin'
-			version = '0.0.1-SNAPSHOT'
+			version = '0.0.2-SNAPSHOT'
 
             inceptionYear '2019'
             dependencyManagement {
 	            dependencies {
 	            	dependency {
-		            	groupId 'org.springframework'
-						artifactId 'spring-core'
-						version '4.0.5.RELEASE'
+		            	groupId 'org.apache.poi'
+						artifactId 'poi'
+						version '4.0.1'
 		            }
 	            }
             }
@@ -45,4 +46,3 @@ artifacts {
         builtBy createPom
     }
 }
-jar.enabled = false
