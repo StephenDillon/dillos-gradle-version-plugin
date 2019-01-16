@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+repositories { 
+	mavenLocal() 
+	mavenCentral()
+}
+
+group = 'dillos'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile 'org.springframework:spring-core'
+}
+
+task createPom {
+    pom {
+        project {
+            groupId 'dillos'
+            artifactId 'dillos-gradle-version-plugin'
+			version = '0.0.1-SNAPSHOT'
+
+            inceptionYear '2019'
+            dependencyManagement {
+	            dependencies {
+	            	dependency {
+		            	groupId 'org.springframework'
+						artifactId 'spring-core'
+						version '4.0.5.RELEASE'
+		            }
+	            }
+            }
+        }
+    }.writeTo("$buildDir/dillos-parent.pom")
+}
+
+def destFile = file("$buildDir/dillos-parent.pom")
+
+artifacts {
+    archives(destFile) {
+        name 'dillos-parent'
+        type 'pom'
+        builtBy createPom
+    }
+}
+jar.enabled = false
